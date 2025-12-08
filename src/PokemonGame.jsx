@@ -6,7 +6,7 @@ import {AudioManager} from './utility/audioManager';
 
 function PokemonGame() {
   useEffect(() => {
-    // Ensure background music is stopped when component unmounts
+    // Ensure background music is stopped when component unmounts. for example when navigating away from game.
     return () => {
       AudioManager.stopBg();
     };
