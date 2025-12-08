@@ -51,27 +51,19 @@ function AuthPage() {
     if (isLogin) {
         return (
             <div>
-                <Login setIsLogin={setIsLogin} /> {/* pass setIsLogin as a prop */}
-                <div className="switch-reg-box">
-                    <p className="switch-reg-p">
-                        Don't have an account?{" "}
-                        <button type="button" onClick={() => setIsLogin(false)} className="switch-reg-btn">
-                            Register
-                        </button>
-                    </p>
-                </div>
+                <Login setIsLogin={setIsLogin} />
             </div>
         );
     }
 
     return (
-        <div className="auth-page">
-            <h1 className="title">Register an account</h1>
+        <div className="content">
+            <h1 className="title">Create an account</h1>
             <br />
 
-            <div className="auth-content">
+            <div className="content-2">
 
-                <div className="reg-form">
+                <div className="input-form">
 
                     <div className="inputs">
                         <input
@@ -94,17 +86,13 @@ function AuthPage() {
                         <button onClick={clearList} className="btn">Clear</button>
                     </div>
 
-                    {errorMessage && (
-                        <p style={{
-                            color: errorMessage.includes("successful") ? "green" : "red",
-                            marginTop: "10px"
-                        }}>
-                            {errorMessage}
-                        </p>
-                    )} {/* Not sure if this is needed */}
-
-
                 </div>
+
+                {errorMessage && (
+                    <p className={`message ${errorMessage.includes("successful") ? "success" : "error"}`}>
+                        {errorMessage}
+                    </p>
+                )}
 
                 <div className="switch-box">
                     <p className="switch-login-p">

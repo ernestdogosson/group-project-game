@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import "../Auth.css";
 
-function Login({ setIsLogin}) {
+
+function Login({ setIsLogin }) {
 
     const initialUsername = localStorage.getItem('userUsername') || '';
     const initialPassword = localStorage.getItem('userPassword') || '';
@@ -45,40 +45,50 @@ function Login({ setIsLogin}) {
 
     return (
 
-        <div className="login-page">
+        <div className="content">
             <h1 className="title">Login</h1>
-            <p>Enter your username and password</p>
 
-            <div className="login-form">
+            <div className="content-2">
 
-                <div className="inputs">
-                    <input
-                        type="text"
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
-                        placeholder="Username"
-                        className="margin-b" />
+                <div className="input-form">
 
-                    <input
-                        type="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        placeholder="Password" />
-                </div>
+                    <div className="inputs">
+                        <input
+                            type="text"
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
+                            placeholder="Username"
+                            className="input" />
 
-                <div className="buttons">
-                    <button onClick={logIn} className="margin-b">Log in</button>
-                    <button onClick={clearList}>Clear</button>
+                        <input
+                            type="password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            placeholder="Password"
+                            className="input" />
+                    </div>
+
+                    <div className="buttons">
+                        <button onClick={logIn} className="btn">Log in</button>
+                        <button onClick={clearList} className="btn">Clear</button>
+                    </div>
+
                 </div>
 
                 {errorMessage && (
-                    <p style={{
-                        color: errorMessage.includes("successful") ? "green" : "red",
-                        marginTop: "10px"
-                    }}>
+                    <p className={`message ${errorMessage.includes("successful") ? "success" : "error"}`}>
                         {errorMessage}
                     </p>
                 )}
+
+                <div className="switch-box">
+                    <p className="switch-login-p">
+                        Don't have an account?{" "}
+                        <button type="button" onClick={() => setIsLogin(false)} className="btn log-in">
+                            Register
+                        </button>
+                    </p>
+                </div>
 
             </div>
 
