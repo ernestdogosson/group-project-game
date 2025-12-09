@@ -1,0 +1,119 @@
+/* error message */
+
+.message {
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    min-width: 450px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.message.success {
+    color: green;
+}
+
+.message.error {
+    color: red;
+}
+
+/* register and login */
+
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    overflow-x: hidden;
+    background-color: var(--primary-bg-color);
+}
+
+.title {
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    padding: 0;
+    margin-bottom: 30px;
+}
+
+.content-2 {
+    min-width: 500px;
+    background-color: white;
+    border: 10px;
+    border-radius: 15px;
+    padding: 30px;
+}
+
+.input-form {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    min-height: 150px;
+    min-width: 450px;
+}
+
+.inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.input {
+    max-width: 200px;
+    background-color: white;
+    color: black;
+    padding: 5px;
+    border: 2px solid gray;
+    border-radius: 5px;
+}
+
+.input::placeholder {
+    color: gray;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    max-width: 100px;
+    gap: 10px;
+}
+
+.btn {
+    min-width: 100px;
+    min-height: 30px;
+    background-color:   var(--primary-bg-color);
+    color: white;
+    text-align: center;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.log-in {
+    margin-left: 20px;
+}
+
+.btn:hover {
+    background-color: var(--primary-color);
+    color: white;
+    transition: background-color 0.5s ease;
+}
+
+/* switch */
+
+.switch-box {
+    display: flex;
+    justify-content: center;
+    min-width: 450px;
+    padding: 0;
+    margin: 0;
+}
+
+.switch-login-p {
+    margin: 0;
+    padding: 0;
+}
