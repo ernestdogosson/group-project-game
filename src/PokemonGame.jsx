@@ -66,7 +66,7 @@ function PokemonGame() {
     // Wait 700 micro seconds to show result, then fetch next round
     setTimeout(() => {
       fetchNewRound();
-    }, 700);
+    }, 1500);
   };
 
   return (
