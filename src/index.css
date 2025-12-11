@@ -26,22 +26,22 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 40px;
+  padding: 1.5rem;
 }
 
 .game-title {
-  font-size: 36px;
-  margin-bottom: 40px;
+  font-size: clamp(1.5rem, 5vw, 2.25rem);
+  margin-bottom: 2rem;
 }
 
 /* DISPLAY BOX (Pokemon Sprite Container) */
 .display-box {
-  width: 400px;
-  height: 400px;
+  width: min(400px, 90vw);
+  height: min(400px, 90vw);
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 20px;
+  margin-bottom: 1.25rem;
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
   border-radius: 20px;
   position: relative;
@@ -49,13 +49,13 @@ body {
 
 /* POKEMON NAME DISPLAY */
 .pokemon-name-display {
-  font-size: 28px;
-  height: 40px;
-  margin-bottom: 20px;
+  font-size: clamp(1.25rem, 4vw, 1.75rem);
+  min-height: 2.5rem;
+  margin-bottom: 1.25rem;
   font-weight: bold;
   text-align: center;
   text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.3);
-  letter-spacing: 1rem;
+  letter-spacing: 0.5rem;
 }
 
 /* START BUTTON */
@@ -71,8 +71,9 @@ body {
 
 /* POKEMON SPRITE IMAGE */
 .pokemon-img {
-  width: 300px;
-  height: 300px;
+  width: min(300px, 75vw);
+  height: min(300px, 75vw);
+  max-width: 100%;
   object-fit: contain;
 }
 
@@ -127,22 +128,33 @@ body {
 }
 .scoreboard {
   background: rgba(0,0,0,0.3);
-  padding: 20px;
+  padding: 1.25rem;
   border-radius: 12px;
-  width: 250px;
-  margin-bottom: 20px;
+  width: 100%;
+  max-width: 250px;
+  margin-bottom: 1.25rem;
   text-align: center;
   box-shadow: 0 0 12px rgba(0,0,0,0.3);
 }
 
 .scoreboard p {
-  margin: 8px 0;
-  font-size: 18px;
+  margin: 0.5rem 0;
+  font-size: clamp(0.9rem, 2.5vw, 1.125rem);
 }
 
 .scoreboard-wrapper {
   display: flex;
-  position: fixed;
-  right: 40px;
-  top: 120px;
+  width: 100%;
+  max-width: 300px;
+  margin-bottom: 1rem;
+}
+
+/* Tablet and up: fixed position scoreboard */
+@media (min-width: 768px) {
+  .scoreboard-wrapper {
+    position: fixed;
+    right: 2rem;
+    top: 7.5rem;
+    width: auto;
+  }
 }
