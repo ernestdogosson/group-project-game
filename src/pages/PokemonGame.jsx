@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import PokemonDisplay from "./components/PokemonDisplay";
-import AnswerButtons from "./components/AnswerButtons";
-import Scoreboard from "./components/Scoreboard";
-import {AudioManager} from './utility/audioManager';
+import PokemonDisplay from "../components/PokemonDisplay";
+import AnswerButtons from "../components/AnswerButtons";
+import Scoreboard from "../components/Scoreboard";
+import {AudioManager} from '../utility/audioManager';
 
 function PokemonGame() {
   const [gameStarted, setGameStarted] = useState(false); // Track if game has started
@@ -15,7 +15,7 @@ function PokemonGame() {
   const [total, setTotal] = useState(0);  // scoreboard, Total rounds played
   const [streak, setStreak] = useState(0); // scoreboard, Correct streak
 
-  // topscore logic
+  // Topscore logic
 
   const [topScore, setTopScore] = useState(() => {
     const savedScore = localStorage.getItem('topScore');
@@ -29,8 +29,8 @@ function PokemonGame() {
 
     localStorage.setItem('topScore', topScore);
   }, [score, topScore]);
-  
-    // diffculties
+
+    // Difficulties
 
     const TIME_LIMITS = {
       easy: 90,
@@ -59,7 +59,8 @@ function PokemonGame() {
       setTimeLeft(TIME_LIMITS[difficulty]);
     }, [difficulty]);
 
-    //End game logic
+    // End game logic
+
     const endGame = () => {
       setGameOver(true);
     };
@@ -118,6 +119,7 @@ function PokemonGame() {
     };
 
     // Starts the game
+
     const startGame = () => {
       setGameStarted(true);
       setGameOver(false);
@@ -150,8 +152,6 @@ function PokemonGame() {
       <div className="game-container">
         <h1 className="game-title">Who's That Pokemon?</h1>
         {gameStarted && !gameOver && <h2>Time Left: {timeLeft}s</h2>}
-
-        {/* difficulties */}
 
         <form>
           <div>

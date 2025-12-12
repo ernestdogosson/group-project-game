@@ -85,7 +85,7 @@ export default function AudioControls({ className }) {
     <div className='audio_controls'>
       {/* Play / Pause */}
       <button type="button" onClick={togglePlay} className='audio_controls_toggle'>
-        {isPlaying ? 'Pause Music' : 'Play Music'}
+        {isPlaying ? 'Pause' : 'Play'}
       </button>
 
       {/* Volume slider and percentage */}

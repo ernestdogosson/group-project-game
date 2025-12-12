@@ -17,7 +17,7 @@ function Login({ setIsLogin }) {
     const clearList = () => {
         setUsername('');
         setPassword('');
-    }; // almost the same as in Auth.jsx, but does not clear localStorage
+    }; // Almost the same as in Auth.jsx, but does not clear localStorage
 
     const logIn = () => {
         setErrorMessage("");

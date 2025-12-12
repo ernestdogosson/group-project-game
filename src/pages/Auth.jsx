@@ -4,7 +4,7 @@ import "../Auth.css";
 
 function AuthPage() {
 
-    const [isLogin, setIsLogin] = useState(false); // login state variable
+    const [isLogin, setIsLogin] = useState(false);
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -15,7 +15,7 @@ function AuthPage() {
         if (pwd.length < 8) {
             return "Password must be at least 8 characters long";
         }
-        return ""; // empty string = no error
+        return ""; // Empty string = no error
     };
 
     const addUser = () => {
