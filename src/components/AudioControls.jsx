@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { AudioManager } from '../utility/audioManager';
-import '../Audio.css';
+import '../min-audio.css';
 
 // AudioControls component
 // - UI to control the game's background music
@@ -85,12 +85,12 @@ export default function AudioControls({ className }) {
     <div className='audio_controls'>
       {/* Play / Pause */}
       <button type="button" onClick={togglePlay} className='audio_controls_toggle'>
-        {isPlaying ? 'Pause Music' : 'Play Music'}
+        {isPlaying ? 'Pause' : 'Play'}
       </button>
 
       {/* Volume slider and percentage */}
       <div className='audio_controls_volume-row'>
-        <label className='audio_controls_label'>Volume</label>
+        <label className='normal-text'>Volume</label>
         <input
           className='pokeball-range'
           type="range"

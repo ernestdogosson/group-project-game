@@ -1,4 +1,4 @@
-/* error message */
+/* Error message */
 
 .message {
     display: flex;
@@ -17,17 +17,20 @@
     color: red;
 }
 
-/* register and login */
+/* Register and login */
 
 .content {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-    height: 100vh;
+    min-height: 78vh;
     width: 100%;
     overflow-x: hidden;
     background-color: var(--primary-bg-color);
+    padding: 0;
+    padding-top: 50px;
+    margin: 0;
 }
 
 .title {
@@ -41,9 +44,9 @@
 .content-2 {
     min-width: 500px;
     background-color: white;
-    border: 10px;
+    border: 4px var(--primary-color) solid;
     border-radius: 15px;
-    padding: 30px;
+    padding: 20px;
 }
 
 .input-form {
@@ -69,6 +72,7 @@
     padding: 5px;
     border: 2px solid gray;
     border-radius: 5px;
+    margin-right: 10px;
 }
 
 .input::placeholder {
@@ -85,16 +89,13 @@
 .btn {
     min-width: 100px;
     min-height: 30px;
+    padding: 7px;
     background-color:   var(--primary-bg-color);
     color: white;
     text-align: center;
-    border: none;
+    border: 2px solid var(--primary-color);
     border-radius: 5px;
     cursor: pointer;
-}
-
-.log-in {
-    margin-left: 20px;
 }
 
 .btn:hover {
@@ -103,17 +104,25 @@
     transition: background-color 0.5s ease;
 }
 
-/* switch */
+/* Switch */
 
 .switch-box {
     display: flex;
     justify-content: center;
     min-width: 450px;
     padding: 0;
-    margin: 0;
+    margin-bottom: 10px;
 }
 
 .switch-login-p {
+    color: black;
     margin: 0;
     padding: 0;
 }
+
+.link {
+    color: var(--primary-bg-color);
+    font-weight: bold;
+    cursor: pointer;
+}
+

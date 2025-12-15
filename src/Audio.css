@@ -1,18 +1,26 @@
 .audio_controls {
   display: flex; 
+  max-height: 200px;
   gap: 12; 
   align-items: center;
   justify-content: center;
+  padding-top: 30px;
 }
 
 .audio_controls_toggle {
-  padding: 6px 10px;
+  min-width: 100px;
+  padding: 10px;
   background-color: #ec3a0e;
-  border: 2px solid #000000;
+  border: 2px solid #a92b0c;
   border-radius: 8px;
   color: #feffff; 
   font-weight: bold;
   cursor: pointer;
+}
+
+.audio_controls_toggle:hover {
+  background-color: #d1330c;
+  transition : background-color 0.8s ease-in-out;
 }
 
 .audio_controls_volume-row {
@@ -22,12 +30,15 @@
   gap: 8px;
 }
 
-.audio_controls_label {
-  font-size: 12px;
+.normal-text {
+  font-size: 20px;
+  font-weight: bold;
+  margin-left: 20px;
 }
 
 .audio_controls_percent {
-  font-size: 12px;
+  font-size: 20px;
+  font-weight: bold;
   min-width: 36px;
 }
 
