@@ -43,7 +43,7 @@ export const AudioManager = {
   isBgPlaying() {
     try {
       return sounds.bg.playing();
-    } catch (e) {
+    } catch {
       return false;
     }
   },

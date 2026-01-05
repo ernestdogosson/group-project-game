@@ -6,50 +6,46 @@ import '../min-audio.css';
 // - UI to control the game's background music
 // - Play/Pause button and a volume slider
 // - Persists settings in localStorage so they survive reloads
-export default function AudioControls({ className }) {
+export default function AudioControls() {
+  // Initialize volume from localStorage
+  const getInitialVolume = () => {
+    const storedVol = localStorage.getItem('musicVolume');
+    return storedVol !== null ? Number(storedVol) : 0.4;
+  };
   
   // Track whether music is currently playing (for button label)
   const [isPlaying, setIsPlaying] = useState(false);
   // Track the slider value (0.0 - 1.0)
-  const [volume, setVolume] = useState(0.4);
+  const [volume, setVolume] = useState(getInitialVolume());
 
- 
   useEffect(() => {
-    // Load saved volume and music-on flag from previous session
-    const storedVol = localStorage.getItem('musicVolume');
+    // Apply the saved volume to the AudioManager
+    try { AudioManager.setBgVolume(volume); } catch { /* ignore */ }
+    
+    // Load saved music-on flag from previous session
     const storedOn = localStorage.getItem('musicOn');
-
-    if (storedVol !== null) {
-      const v = Number(storedVol);
-      setVolume(v);
-      // Apply the saved volume to the AudioManager
-      try { AudioManager.setBgVolume(v); } catch (e) { /* ignore */ }
-    } else {
-      // No saved volume: ensure AudioManager has the default
-      try { AudioManager.setBgVolume(volume); } catch (e) { /* ignore */ }
-    }
-
    
     if (storedOn === 'true') {
       try {
         AudioManager.playBg();
-        setIsPlaying(true);
+        const shouldPlay = true;
         
         setTimeout(() => {
           if (!AudioManager.isBgPlaying()) {
-            setIsPlaying(false);
             localStorage.setItem('musicOn', 'false');
+          } else if (shouldPlay) {
+            setIsPlaying(true);
           }
         }, 400);
-      } catch (e) { /* ignore */ }
+      } catch { /* ignore */ }
     }
-  }, []);
+  }, [volume]);
 
   
   // Toggle music play/pause when user clicks the button
   const togglePlay = () => {
     if (isPlaying) {
-      try { AudioManager.pauseBg(); } catch (e) { /* ignore */ }
+      try { AudioManager.pauseBg(); } catch { /* ignore */ }
       setIsPlaying(false);
       localStorage.setItem('musicOn', 'false');
     } else {
@@ -64,7 +60,7 @@ export default function AudioControls({ className }) {
             localStorage.setItem('musicOn', 'false');
           }
         }, 400);
-      } catch (e) { /* ignore */ }
+      } catch { /* ignore */ }
     }
   };
 
@@ -75,7 +71,7 @@ export default function AudioControls({ className }) {
   const onVolumeChange = (e) => {
     const v = Number(e.target.value);
     setVolume(v);
-    try { AudioManager.setBgVolume(v); } catch (e) { /* ignore */ }
+    try { AudioManager.setBgVolume(v); } catch { /* ignore */ }
     localStorage.setItem('musicVolume', String(v));
   };
 

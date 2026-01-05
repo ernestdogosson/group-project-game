@@ -1,8 +1,6 @@
 
 function Scoreboard({ topScore, score, total, streak }) {
-  // Calculate accuracy safely (avoid dividing by zero)
-  const accuracy =
-    total > 0 ? Math.round((score / total) * 100) : 0;
+  
 
   return (
     <div className="scoreboard">

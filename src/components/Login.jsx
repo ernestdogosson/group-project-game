@@ -12,8 +12,7 @@ function Login({ setIsLogin }) {
 
   const navigate = useNavigate();
 
-<<<<<<< HEAD
-  const clearList = () => {
+const clearList = () => {
     setUsername("");
     setPassword("");
   }; // almost the same as in Auth.jsx, but does not clear localStorage
@@ -45,42 +44,6 @@ function Login({ setIsLogin }) {
   return (
     <div className="content">
       <h1 className="title">Login</h1>
-
-=======
-  /*     const clearList = () => {
-        setUsername('');
-        setPassword('');
-    }; */ // Almost the same as in Auth.jsx, but does not clear localStorage
-
-  const logIn = () => {
-    setErrorMessage("");
-
-    const registeredUsername = localStorage.getItem("userUsername");
-    const registeredPassword = localStorage.getItem("userPassword");
-
-    if (!username || !password) {
-      setErrorMessage("Username and password are required");
-      return;
-    }
-
-    if (!registeredUsername) {
-      setErrorMessage("No registered account found. Please register first.");
-      return;
-    }
-
-    if (username === registeredUsername && password === registeredPassword) {
-      setErrorMessage("Login successful!");
-      navigate("/home");
-    } else {
-      setErrorMessage("Invalid username or password.");
-    }
-  };
-
-  return (
-    <div className="content">
-      <h1 className="title">Login</h1>
-
->>>>>>> authentication
       <div className="content-2">
         <div className="input-form">
           <div className="inputs">
@@ -91,31 +54,13 @@ function Login({ setIsLogin }) {
               placeholder="Username"
               className="input"
             />
-<<<<<<< HEAD
-
-            <input
+<input
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Password"
               className="input"
             />
-=======
-
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="Password"
-              className="input"
-            />
-          </div>
-
-          <div className="buttons">
-            <button onClick={logIn} className="btn">
-              Log in
-            </button>
->>>>>>> authentication
           </div>
         </div>
 
@@ -127,7 +72,6 @@ function Login({ setIsLogin }) {
           </p>
         )}
 
-<<<<<<< HEAD
         <div className="buttons">
           <button onClick={logIn} className="btn">
             Log in
@@ -147,21 +91,6 @@ function Login({ setIsLogin }) {
             >
               Register
             </button>
-=======
-        <div className="switch-box">
-          <p className="switch-login-p">
-            Don't have an account?{" "}
-            <a
-              href="#"
-              className="link"
-              onClick={(e) => {
-                e.preventDefault(); // Prevents the default browser link behavior
-                setIsLogin(false);
-              }}
-            >
-              Register
-            </a>
->>>>>>> authentication
           </p>
         </div>
       </div>

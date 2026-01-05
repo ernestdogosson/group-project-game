@@ -45,21 +45,7 @@ function AuthPage() {
             localStorage.removeItem("userUsername");
             localStorage.removeItem("userPassword");
         }
-<<<<<<< HEAD
-    };
-
-
-
-    if (isLogin) {
-        return (
-            <div>
-                <Login setIsLogin={setIsLogin} />
-            </div>
-        );
-    }
-=======
     }; */
->>>>>>> authentication
 
   if (isLogin) {
     return (

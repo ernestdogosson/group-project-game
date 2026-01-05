@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import PokemonDisplay from "../components/PokemonDisplay";
 import AnswerButtons from "../components/AnswerButtons";
 import Scoreboard from "../components/Scoreboard";
@@ -26,46 +26,43 @@ function PokemonGame() {
     if (score > topScore) {
       setTopScore(score);
     }
-
-    localStorage.setItem('topScore', topScore);
   }, [score, topScore]);
 
-    // Difficulties
+  useEffect(() => {
+    localStorage.setItem('topScore', topScore);
+  }, [topScore]);
 
-    const TIME_LIMITS = {
-      easy: 90,
-      medium: 60,
-      hard: 30
-    };
+  // Difficulties
+  const TIME_LIMITS = useMemo(() => ({
+    easy: 90,
+    medium: 60,
+    hard: 30
+  }), []);
 
-    const [difficulty, setDifficulty] = useState("medium");
-    const [timeLeft, setTimeLeft] = useState(TIME_LIMITS["medium"]);
+  const [difficulty, setDifficulty] = useState("medium");
+  const [timeLeft, setTimeLeft] = useState(TIME_LIMITS["medium"]);
 
-    useEffect(() => {
+  const endGame = () => {
+    setGameOver(true);
+  };
 
-      if (timeLeft <= 0) {
-        endGame();
-        return;
-      }
+  useEffect(() => {
+    if (timeLeft <= 0) {
+      endGame();
+      return;
+    }
 
-      const timerId = setInterval(() => {
-        setTimeLeft((t) => t - 1);
-      }, 1000);
+    const timerId = setInterval(() => {
+      setTimeLeft((t) => t - 1);
+    }, 1000);
 
-      return () => clearInterval(timerId);
-    }, [timeLeft]);
+    return () => clearInterval(timerId);
+  }, [timeLeft]);
 
-    useEffect(() => {
-      setTimeLeft(TIME_LIMITS[difficulty]);
-    }, [difficulty]);
-
-    // End game logic
-
-    const endGame = () => {
-      setGameOver(true);
-    };
+  useEffect(() => {
+    setTimeLeft(TIME_LIMITS[difficulty]);
+  }, [difficulty, TIME_LIMITS]);
     const restartGame = () => {
-      setTopScore(topScore);
       setScore(0);
       setTotal(0);
       setStreak(0);
