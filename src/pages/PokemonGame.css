@@ -5,8 +5,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 2rem 1rem;
-  gap: 1.5rem;
+  justify-content: center;
+  padding: 1rem;
+  gap: 1rem;
   font-family:
     "Segoe UI",
     system-ui,
@@ -14,9 +15,79 @@
     sans-serif;
 }
 
+/* User info section (welcome + logout) */
+.user-info {
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 0.8rem 1.2rem;
+  border-radius: 16px;
+  border: 3px solid #ffcb05;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.welcome-text {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #2a75bb;
+}
+
+.logout-btn {
+  padding: 6px 16px;
+  background: #ee1515;
+  border: none;
+  color: #fff;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 0 #cc0000;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.logout-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 0 #cc0000;
+}
+
+.logout-btn:active {
+  transform: translateY(1px);
+  box-shadow: 0 1px 0 #cc0000;
+}
+
+/* Logout button during game - top right on desktop */
+.logout-btn-game {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  padding: 8px 16px;
+  background: rgba(238, 21, 21, 0.9);
+  border: 2px solid #fff;
+  color: #fff;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  z-index: 1000;
+}
+
+.logout-btn-game:hover {
+  background: #ee1515;
+  transform: translateY(-2px);
+}
+
 /* Game title */
 .game-title {
-  font-size: clamp(2rem, 5vw, 3rem);
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
   font-weight: 900;
   color: #ffcb05;
   text-shadow:
@@ -33,23 +104,23 @@
 /* Difficulty form */
 .difficulty-form {
   width: 100%;
-  max-width: 400px;
+  max-width: 350px;
   background: rgba(255, 255, 255, 0.95);
-  padding: 1.5rem;
-  border-radius: 20px;
-  border: 4px solid #ffcb05;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  padding: 1.2rem;
+  border-radius: 16px;
+  border: 3px solid #ffcb05;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
 }
 
 .select-difficulty {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 0.8rem;
   align-items: center;
 }
 
 .difficulty-label {
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: 700;
   color: #2c3e50;
   text-transform: uppercase;
@@ -59,11 +130,11 @@
 /* Difficulty dropdown */
 .difficulty-dropdown {
   width: 100%;
-  padding: 12px 20px;
-  font-size: 1rem;
+  padding: 10px 16px;
+  font-size: 0.95rem;
   font-weight: 700;
   border: 3px solid #2a75bb;
-  border-radius: 12px;
+  border-radius: 10px;
   background: white;
   color: #2c3e50;
   cursor: pointer;
@@ -74,7 +145,6 @@
 .difficulty-dropdown:hover {
   border-color: #ffcb05;
   transform: translateY(-2px);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .difficulty-dropdown:focus {
@@ -83,15 +153,12 @@
   box-shadow: 0 0 0 3px rgba(255, 203, 5, 0.3);
 }
 
-/* Color coding for difficulties */
 .difficulty-dropdown.easy {
   background: linear-gradient(135deg, #77dd77 0%, #90ee90 100%);
-  color: #2c3e50;
 }
 
 .difficulty-dropdown.medium {
   background: linear-gradient(135deg, #ffb347 0%, #ffc670 100%);
-  color: #2c3e50;
 }
 
 .difficulty-dropdown.hard {
@@ -99,64 +166,105 @@
   color: white;
 }
 
-/* Game info bar (timer and lives) */
+/* ============================================
+   GAME LAYOUT - HORIZONTAL 3-COLUMN
+   Timer and Scoreboard are small side indicators
+   ============================================ */
+.game-layout {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 900px;
+}
+
+/* LEFT - Timer and Lives (small indicator) */
 .game-info {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
-  width: 100%;
-  max-width: 600px;
+  justify-content: center;
+  gap: 0.8rem;
   background: rgba(255, 255, 255, 0.95);
-  padding: 1rem 2rem;
-  border-radius: 20px;
-  border: 4px solid #ffcb05;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-  gap: 2rem;
+  padding: 1rem;
+  border-radius: 16px;
+  border: 3px solid #ffcb05;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  width: 160px;
+  min-width: 160px;
 }
 
-/* Timer circle container */
+/* CENTER - Pokemon Display (main attraction) */
+.pokemon-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* RIGHT - Scoreboard (small indicator) */
+.scoreboard-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 1rem;
+  border-radius: 16px;
+  border: 3px solid #ffcb05;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  min-width: 120px;
+}
+
+/* Scoreboard vertical in sidebar */
+.scoreboard-wrapper .scoreboard {
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.scoreboard-wrapper .scoreboard p {
+  font-size: 0.85rem;
+}
+
+.scoreboard-wrapper .scoreboard p:not(:last-child)::after {
+  content: none;
+}
+
+/* Timer circle - smaller */
 .timer-circle-container {
   position: relative;
-  width: 100px;
-  height: 100px;
+  width: 70px;
+  height: 70px;
 }
 
-/* SVG for the circular timer */
 .timer-circle-svg {
   width: 100%;
   height: 100%;
-  /* Rotate so the circle starts at the top */
   transform: rotate(-90deg);
 }
 
-/* Background circle (light gray ring) */
 .timer-circle-bg {
   fill: none;
-  stroke: rgba(255, 255, 255, 0.3);
+  stroke: rgba(42, 117, 187, 0.2);
   stroke-width: 8;
 }
 
-/* Progress circle (colored ring that burns down) */
 .timer-circle-progress {
   fill: none;
   stroke: #ffcb05;
   stroke-width: 8;
   stroke-linecap: round;
-  /* Total circumference of circle (2 * PI * radius = 2 * 3.14159 * 54) */
   stroke-dasharray: 339.292;
   stroke-dashoffset: 0;
-  /* Smooth animation as timer counts down */
   transition:
     stroke-dashoffset 1s linear,
     stroke 0.3s ease;
 }
 
-/* When time is low, turn red */
 .timer-circle-progress.danger {
   stroke: #ee1515;
 }
 
-/* Number in the center of the circle */
 .timer-number-display {
   position: absolute;
   top: 50%;
@@ -165,13 +273,11 @@
 }
 
 .timer-number {
-  font-size: 2.5rem;
+  font-size: 1.8rem;
   font-weight: 900;
   color: #2a75bb;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-/* Pulse animation when time is low */
 .timer-number.danger {
   color: #ee1515;
   animation: pulse-timer 0.6s ease-in-out infinite;
@@ -183,7 +289,7 @@
     transform: scale(1);
   }
   50% {
-    transform: scale(1.15);
+    transform: scale(1.1);
   }
 }
 
@@ -191,19 +297,29 @@
 .lives-display {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-}
-
-.lives-label {
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: #2c3e50;
-  margin-right: 0.5rem;
+  gap: 0.2rem;
 }
 
 .heart {
-  font-size: 2rem;
-  transition: all 0.3s ease;
+  font-size: 1.3rem;
+}
+
+/* Remix Icons styling */
+.heart i {
+  font-size: inherit;
+}
+
+.heart .ri-heart-fill {
+  color: #ee1515;
+}
+
+.heart .ri-heart-line {
+  color: #ccc;
+}
+
+.ri-trophy-fill {
+  color: #ffcb05;
+  margin-right: 0.3rem;
 }
 
 .heart.alive {
@@ -215,32 +331,163 @@
   filter: grayscale(1);
 }
 
-/* Scoreboard wrapper */
-.scoreboard-wrapper {
-  width: 100%;
-  max-width: 600px;
-}
-
-/* Display box - main game area */
+/* Display box - main pokemon area */
 .display-box {
   width: 100%;
-  max-width: 500px;
+  max-width: 400px;
   min-height: 400px;
   background: rgba(255, 255, 255, 0.95);
-  border-radius: 30px;
-  padding: 3rem 2rem;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
-  border: 5px solid #ffcb05;
+  border-radius: 24px;
+  padding: 1.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  border: 4px solid #ffcb05;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
+/* Loading placeholder */
+.loading-placeholder {
+  width: 280px;
+  height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 5rem;
+  font-weight: 900;
+  color: #2a75bb;
+  opacity: 0.3;
+  font-size: 6rem;
+}
+
+/* Pokemon Image */
+.pokemon-img {
+  width: 280px;
+  height: 280px;
+  object-fit: contain;
+}
+
+.pokemon-img.silhouette {
+  filter: brightness(0) drop-shadow(0 0 15px rgba(0, 0, 0, 0.5));
+}
+
+.pokemon-img.revealed {
+  filter: brightness(1) drop-shadow(0 8px 15px rgba(0, 0, 0, 0.3));
+  animation: reveal 0.5s ease-out;
+}
+
+@keyframes reveal {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Pokemon name */
+.pokemon-name-display {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: #ffcb05;
+  text-shadow:
+    2px 2px 0 #2a75bb,
+    3px 3px 0 rgba(0, 0, 0, 0.3);
+  text-transform: capitalize;
+  min-height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0.5rem 0;
+}
+
+/* Answer Buttons */
+.answer-buttons {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.8rem;
+  width: 100%;
+  max-width: 500px;
+}
+
+.answer-btn {
+  padding: 12px 16px;
+  background: #fff;
+  border: 3px solid #2a75bb;
+  color: #2c3e50;
+  border-radius: 16px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-transform: capitalize;
+  box-shadow: 0 4px 0 #1a5a8f;
+  font-family: inherit;
+}
+
+.answer-btn:not(:disabled):hover {
+  transform: translateY(-3px);
+  box-shadow: 0 7px 0 #1a5a8f;
+}
+
+.answer-btn:active:not(:disabled) {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 #1a5a8f;
+}
+
+.answer-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.answer-btn.correct {
+  background: linear-gradient(135deg, #77dd77 0%, #50c878 100%);
+  color: #fff;
+  border-color: #3da95f;
+  animation: correctPulse 0.4s ease;
+  box-shadow: 0 4px 0 #2d8a4a;
+}
+
+.answer-btn.wrong {
+  background: linear-gradient(135deg, #ee1515 0%, #cc0000 100%);
+  color: #fff;
+  border-color: #aa0000;
+  animation: shake 0.3s ease;
+  box-shadow: 0 4px 0 #990000;
+}
+
+@keyframes correctPulse {
+  0% {
+    transform: scale(0.95);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-6px);
+  }
+  75% {
+    transform: translateX(6px);
+  }
+}
+
 /* Start button */
 .start-btn {
-  padding: 16px 48px;
-  font-size: 1.3rem;
+  padding: 14px 40px;
+  font-size: 1.2rem;
   font-weight: 800;
   color: #fff;
   border: none;
@@ -249,24 +496,24 @@
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow:
-    0 8px 0 #cc9900,
-    0 12px 25px rgba(0, 0, 0, 0.3);
+    0 6px 0 #cc9900,
+    0 10px 20px rgba(0, 0, 0, 0.3);
   text-transform: uppercase;
   letter-spacing: 1.5px;
 }
 
 .start-btn:hover {
-  transform: translateY(-4px);
+  transform: translateY(-3px);
   box-shadow:
-    0 12px 0 #cc9900,
-    0 16px 30px rgba(0, 0, 0, 0.4);
+    0 9px 0 #cc9900,
+    0 14px 25px rgba(0, 0, 0, 0.4);
 }
 
 .start-btn:active {
   transform: translateY(2px);
   box-shadow:
-    0 4px 0 #cc9900,
-    0 6px 15px rgba(0, 0, 0, 0.3);
+    0 3px 0 #cc9900,
+    0 5px 12px rgba(0, 0, 0, 0.3);
 }
 
 /* End screen */
@@ -274,14 +521,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
+  gap: 0.8rem;
   width: 100%;
 }
 
 .end-screen h1 {
-  font-size: clamp(2rem, 5vw, 3rem);
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
   color: #ee1515;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.1);
 }
 
@@ -289,26 +536,24 @@
   color: #2c3e50;
 }
 
-/* Scoreboard text in end screen */
 .scoreboard-text {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: 700;
   color: #2c3e50;
-  margin: 0.3rem 0;
+  margin: 0.2rem 0;
 }
 
 .scoreboard-text.top-score {
-  font-size: 1.5rem;
-  color: #ffcb05;
+  font-size: 1.3rem;
+  color: #cc9900;
   text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.1);
 }
 
 .scoreboard-text.final-score {
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   color: #2a75bb;
 }
 
-/* Pulse animation for play again button */
 .pulse {
   animation: pulse 2s ease-in-out infinite;
 }
@@ -323,82 +568,190 @@
   }
 }
 
-/* Pokemon name display */
-.pokemon-name-display {
-  font-size: 2rem;
-  font-weight: 900;
-  color: #ffcb05;
-  text-shadow:
-    2px 2px 0 #2a75bb,
-    3px 3px 0 rgba(0, 0, 0, 0.3);
-  text-transform: capitalize;
-  min-height: 2.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 1rem 0;
-}
-
-/* Utility classes */
 .normal-text {
   font-size: 1rem;
 }
 
-.m-r {
-  margin-right: 0.5rem;
-}
-
-/* Responsive design */
+/* ============================================
+   MOBILE RESPONSIVE
+   ============================================ */
 @media (max-width: 768px) {
   .game-container {
-    padding: 1rem 0.5rem;
-    gap: 1rem;
+    padding: 0.8rem;
+    gap: 0.6rem;
+    justify-content: flex-start;
+    padding-top: 3rem;
+  }
+
+  .game-title {
+    font-size: 1.3rem;
+  }
+
+  /* Logout moves to top left on mobile */
+  .logout-btn-game {
+    top: 0.5rem;
+    left: 0.5rem;
+    right: auto;
+    padding: 6px 12px;
+    font-size: 0.7rem;
+  }
+
+  /* Stack vertically on mobile */
+  .game-layout {
+    flex-direction: column;
+    gap: 0.5rem;
   }
 
   .game-info {
-    flex-direction: column;
-    padding: 1rem;
+    flex-direction: row;
+    width: 100%;
+    padding: 0.5rem 1rem;
     gap: 1rem;
+    justify-content: center;
+    order: 1;
   }
 
   .timer-circle-container {
-    width: 80px;
-    height: 80px;
+    width: 50px;
+    height: 50px;
   }
 
   .timer-number {
-    font-size: 2rem;
-  }
-
-  .heart {
-    font-size: 1.5rem;
-  }
-
-  .display-box {
-    padding: 2rem 1rem;
-    min-height: 350px;
-  }
-
-  .pokemon-name-display {
-    font-size: 1.5rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .game-title {
-    font-size: 1.8rem;
-  }
-
-  .difficulty-form {
-    padding: 1rem;
-  }
-
-  .start-btn {
-    padding: 14px 36px;
     font-size: 1.1rem;
   }
 
-  .scoreboard-text {
+  .heart {
     font-size: 1rem;
+  }
+
+  .pokemon-center {
+    order: 2;
+  }
+
+  .scoreboard-wrapper {
+    width: 100%;
+    padding: 0.5rem 1rem;
+    order: 3;
+  }
+
+  /* Scoreboard horizontal on mobile */
+  .scoreboard-wrapper .scoreboard {
+    flex-direction: row;
+    justify-content: space-around;
+    gap: 0.5rem;
+  }
+
+  .scoreboard-wrapper .scoreboard p {
+    font-size: 0.75rem;
+  }
+
+  .display-box {
+    max-width: 280px;
+    min-height: 220px;
+    padding: 1rem;
+  }
+
+  .pokemon-img,
+  .loading-placeholder {
+    width: 160px;
+    height: 160px;
+  }
+
+  .loading-placeholder {
+    font-size: 4rem;
+  }
+
+  .pokemon-name-display {
+    font-size: 1.2rem;
+    min-height: 1.5rem;
+    margin: 0.3rem 0;
+  }
+
+  .answer-buttons {
+    gap: 0.5rem;
+    max-width: 100%;
+  }
+
+  .answer-btn {
+    padding: 10px 12px;
+    font-size: 0.9rem;
+    border-radius: 12px;
+    box-shadow: 0 3px 0 #1a5a8f;
+  }
+}
+
+@media (max-width: 400px) {
+  .game-container {
+    padding: 0.5rem;
+    gap: 0.4rem;
+  }
+
+  .game-title {
+    font-size: 1.1rem;
+  }
+
+  .game-info {
+    padding: 0.4rem 0.8rem;
+  }
+
+  .timer-circle-container {
+    width: 40px;
+    height: 40px;
+  }
+
+  .timer-number {
+    font-size: 0.9rem;
+  }
+
+  .heart {
+    font-size: 0.85rem;
+  }
+
+  .scoreboard-wrapper {
+    padding: 0.4rem 0.8rem;
+  }
+
+  .scoreboard-wrapper .scoreboard p {
+    font-size: 0.65rem;
+  }
+
+  .display-box {
+    max-width: 240px;
+    min-height: 180px;
+    padding: 0.8rem;
+    border-width: 3px;
+    border-radius: 18px;
+  }
+
+  .pokemon-img,
+  .loading-placeholder {
+    width: 130px;
+    height: 130px;
+  }
+
+  .loading-placeholder {
+    font-size: 3rem;
+  }
+
+  .pokemon-name-display {
+    font-size: 1rem;
+  }
+
+  .answer-btn {
+    padding: 8px 10px;
+    font-size: 0.8rem;
+  }
+
+  .start-btn {
+    padding: 10px 30px;
+    font-size: 1rem;
+  }
+
+  .end-screen h1 {
+    font-size: 1.5rem;
+  }
+
+  .scoreboard-text {
+    font-size: 0.95rem;
   }
 }

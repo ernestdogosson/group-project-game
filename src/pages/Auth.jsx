@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Login from "../components/Login.jsx";
-import "../Auth.css";
+import "./Auth.css";
 
 function AuthPage() {
   const [isLogin, setIsLogin] = useState(false);
@@ -31,21 +31,23 @@ function AuthPage() {
       return;
     }
 
+    // Check if username already exists
+    const existingUser = localStorage.getItem("userUsername");
+    if (existingUser === username) {
+      setErrorMessage("Username already exists. Please login instead.");
+      return;
+    }
+
     localStorage.setItem("userUsername", username);
     localStorage.setItem("userPassword", password);
 
     setErrorMessage("Registration successful! You can now log in.");
-    setIsLogin(true);
-  };
 
-  /*     const clearList = () => {
-        setUsername('');
-        setPassword('');
-        if (!isLogin) {
-            localStorage.removeItem("userUsername");
-            localStorage.removeItem("userPassword");
-        }
-    }; */
+    // Auto-switch to login after 1 seconds
+    setTimeout(() => {
+      setIsLogin(true);
+    }, 1000);
+  };
 
   if (isLogin) {
     return (
@@ -57,6 +59,8 @@ function AuthPage() {
 
   return (
     <div className="content">
+      <img src="/pokeball.svg" alt="Pokeball" className="pokeball-decoration" />
+
       <h1 className="title">Create an account</h1>
       <br />
 
@@ -102,7 +106,7 @@ function AuthPage() {
               href="#"
               className="link"
               onClick={(e) => {
-                e.preventDefault(); // Prevents the default browser link behavior
+                e.preventDefault();
                 setIsLogin(true);
               }}
             >

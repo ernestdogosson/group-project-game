@@ -1,0 +1,377 @@
+/* Main content container - full screen with Pokemon red background */
+.content {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #ee1515 0%, #cc0000 50%, #ee1515 100%);
+  position: relative;
+  overflow: hidden;
+  padding: 2rem 1rem;
+}
+
+/* Pokemon-themed background decoration */
+.content::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background:
+    radial-gradient(
+      circle at 30% 40%,
+      rgba(255, 255, 255, 0.1) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 70% 60%,
+      rgba(255, 255, 255, 0.05) 0%,
+      transparent 50%
+    );
+  z-index: 0;
+}
+
+/* Pokeball decoration */
+.pokeball-decoration {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 1.5rem;
+  border-radius: 50%;
+  background: linear-gradient(
+    to bottom,
+    #ee1515 0%,
+    #ee1515 45%,
+    #000 45%,
+    #000 55%,
+    #fff 55%,
+    #fff 100%
+  );
+  border: 5px solid #000;
+  position: relative;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  animation: slideDown 0.6s ease-out;
+  z-index: 10;
+}
+
+/* Center button on pokeball */
+.pokeball-decoration::after {
+  content: "";
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #fff;
+  border: 5px solid #000;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Page title */
+.title {
+  font-size: clamp(2rem, 5vw, 2.5rem);
+  font-weight: 900;
+  color: #ffcb05;
+  text-shadow:
+    3px 3px 0 #2a75bb,
+    -1px -1px 0 #2a75bb,
+    1px -1px 0 #2a75bb,
+    -1px 1px 0 #2a75bb,
+    4px 4px 0 rgba(0, 0, 0, 0.3);
+  margin: 0;
+  margin-bottom: 2rem;
+  text-align: center;
+  letter-spacing: 2px;
+  z-index: 10;
+  position: relative;
+}
+
+/* Inner content wrapper */
+.content-2 {
+  background: rgba(255, 255, 255, 0.98);
+  border-radius: 30px;
+  padding: 2.5rem 2rem;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+  max-width: 450px;
+  width: 100%;
+  position: relative;
+  z-index: 10;
+  animation: slideUp 0.6s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Form container */
+.input-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Inputs container */
+.inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Input field styling */
+.input {
+  padding: 14px 18px;
+  font-size: 1rem;
+  border: 3px solid #e0e0e0;
+  border-radius: 12px;
+  background: #f8f9fa;
+  color: #2c3e50;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #ffcb05;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(255, 203, 5, 0.2);
+}
+
+.input::placeholder {
+  color: #999;
+  font-weight: 500;
+}
+
+/* Buttons container */
+.buttons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+/* Button base styling */
+.btn {
+  flex: 1;
+  padding: 14px 24px;
+  font-size: 1.1rem;
+  font-weight: 800;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-family: inherit;
+}
+
+/* Primary button (Register/Login) */
+.btn:not(.log-in) {
+  background: linear-gradient(135deg, #ffcb05 0%, #ffa500 100%);
+  color: #2c3e50;
+  box-shadow:
+    0 6px 0 #cc9900,
+    0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.btn:not(.log-in):hover {
+  transform: translateY(-3px);
+  box-shadow:
+    0 9px 0 #cc9900,
+    0 11px 25px rgba(0, 0, 0, 0.4);
+}
+
+.btn:not(.log-in):active {
+  transform: translateY(2px);
+  box-shadow:
+    0 3px 0 #cc9900,
+    0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Secondary button styling (for register link in login page) */
+.btn.log-in {
+  background: #fff;
+  color: #2a75bb;
+  border: 3px solid #2a75bb;
+  box-shadow: 0 4px 0 #1a5a8f;
+  padding: 8px 16px;
+  font-size: 0.95rem;
+}
+
+.btn.log-in:hover {
+  background: #2a75bb;
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 0 #1a5a8f;
+}
+
+.btn.log-in:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 0 #1a5a8f;
+}
+
+/* Message display (error/success) */
+.message {
+  padding: 12px 16px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-align: center;
+  margin: 1rem 0;
+  animation: messageSlide 0.3s ease-out;
+}
+
+@keyframes messageSlide {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Success message */
+.message.success {
+  background: linear-gradient(135deg, #77dd77 0%, #90ee90 100%);
+  color: #2c3e50;
+  border: 3px solid #50c878;
+}
+
+/* Error message */
+.message.error {
+  background: linear-gradient(135deg, #ff6161 0%, #ff8080 100%);
+  color: #fff;
+  border: 3px solid #ee1515;
+}
+
+/* Switch box (login/register toggle) */
+.switch-box {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 2px solid #e0e0e0;
+  text-align: center;
+}
+
+/* Switch text */
+.switch-login-p {
+  font-size: 0.95rem;
+  color: #666;
+  font-weight: 600;
+  margin: 0;
+}
+
+/* Link styling */
+.link {
+  color: #2a75bb;
+  font-weight: 800;
+  text-decoration: underline;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.link:hover {
+  color: #ffcb05;
+}
+
+/* Delete Account Section */
+.delete-account-section {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 2px solid #ffe0e0;
+  text-align: center;
+}
+
+.delete-account-btn {
+  background: transparent;
+  border: 2px solid #ff6161;
+  color: #ff6161;
+  padding: 8px 20px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-family: inherit;
+}
+
+.delete-account-btn:hover {
+  background: #ff6161;
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(255, 97, 97, 0.3);
+}
+
+.delete-account-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 5px rgba(255, 97, 97, 0.3);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .content-2 {
+    padding: 2rem 1.5rem;
+    margin: 1rem;
+  }
+
+  .title {
+    font-size: 1.8rem;
+  }
+
+  .pokeball-decoration {
+    width: 60px;
+    height: 60px;
+  }
+
+  .pokeball-decoration::after {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .content {
+    padding: 1rem 0.5rem;
+  }
+
+  .content-2 {
+    padding: 1.5rem 1rem;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .buttons {
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+  .input {
+    font-size: 0.95rem;
+  }
+}
