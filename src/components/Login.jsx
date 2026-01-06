@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function Login({ setIsLogin }) {
@@ -12,7 +12,7 @@ function Login({ setIsLogin }) {
 
   const navigate = useNavigate();
 
-const clearList = () => {
+  const clearList = () => {
     setUsername("");
     setPassword("");
   }; // almost the same as in Auth.jsx, but does not clear localStorage
@@ -54,7 +54,7 @@ const clearList = () => {
               placeholder="Username"
               className="input"
             />
-<input
+            <input
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
